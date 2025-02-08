@@ -1,3 +1,8 @@
 How It Works
 Set enableEntryPage = true → Shows the entry page (lightbulb + handle).
 Set enableEntryPage = false → The website immediately loads the main landing page.
+
+
+translateX(+) → Moves tiles to the right.
+translateY(-) → Moves tiles upwards.
+translateZ(+) → Adds depth, keeping the stacked look.

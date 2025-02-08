@@ -16,16 +16,20 @@ document.addEventListener("DOMContentLoaded", function () {
     function createTiles() {
         // Clear existing tiles (if any)
         container.innerHTML = "";
-
-        // Generate tiles dynamically
+        tiles = []; // Reset tiles array
+        
+        // Generate tiles dynamically in FIFO order
         for (let i = 0; i < letters.length; i++) {
             let tile = document.createElement("div");
             tile.classList.add("tile");
             tile.textContent = letters[i];
+            // Assign a z-index so that the first tile gets the highest value
+            tile.style.zIndex = letters.length - i; // A gets highest z-index
             container.appendChild(tile);
-            tiles.unshift(tile);
+            tiles.push(tile);
         }
-    }
+    }    
+
 
     if (!ENTRY_PAGE_ENABLED) {
         /* ---------- SKIP ENTRY PAGE ---------- */
@@ -90,7 +94,7 @@ document.addEventListener("DOMContentLoaded", function () {
     /* ---------- REMOVE TILES USING RIGHT ARROW KEY ---------- */
     document.addEventListener("keydown", function (event) {
         if (event.key === "ArrowRight" && tiles.length > 0) {
-            let topTile = tiles.shift();
+            let topTile = tiles.shift(); // Remove first tile instead of last
             topTile.style.opacity = "0";
             topTile.style.transform =
                 "translateX(50%) translateY(-50%) translateZ(-50px) rotateY(20deg)";

@@ -1,0 +1,71 @@
+  /* ---------- Splash Overlay Styles ---------- */
+  #splash-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: black;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.5s ease;
+  }
+  
+  /* ---------- Lightbulb Icon ---------- */
+  #lightbulb {
+    font-size: 80px;
+    color: #fff;
+    cursor: pointer;
+    transition: opacity 0.5s ease;
+  }
+  
+  /* ---------- Handle & Top Bar ---------- */
+  #handle-container {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    display: none; /* Initially hidden until bulb is clicked */
+    align-items: center;
+    flex-direction: column;
+  }
+  
+  /* Top horizontal bar (Brown base) */
+  #top-bar {
+    width: 90px;
+    height: 8px;
+    background: #8b5a2b; /* Brown color */
+    border-radius: 2px;
+  }
+  
+  /* Wire (String) connecting the knob */
+  #handle-wire {
+    width: 6px;
+    height: 50px;
+    background: #bbb; /* Grayish wire color */
+    margin: 0 auto;
+  }
+  
+  /* Knob (Hollow Green Circle) */
+  #handle-knob {
+    width: 35px; /* Adjusted size */
+    height: 35px;
+    border: 5px solid #32cd32; /* Green thick border */
+    background: transparent; /* Hollow center */
+    border-radius: 50%;
+    cursor: grab;
+    margin-top: -3px; /* Slightly overlapping with wire */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  
+  /* Dragging State */
+  #handle-knob:active {
+    cursor: grabbing;
+  }
+
