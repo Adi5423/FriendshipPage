@@ -4,10 +4,10 @@
     padding: 0;
     box-sizing: border-box;
     font-family: sans-serif;
-  }
-  
-  /* ---------- Splash Overlay Styles ---------- */
-  #splash-overlay {
+}
+
+/* ---------- Splash Overlay Styles ---------- */
+#splash-overlay {
     position: fixed;
     top: 0;
     left: 0;
@@ -20,18 +20,18 @@
     align-items: center;
     justify-content: center;
     transition: transform 0.5s ease;
-  }
-  
-  /* ---------- Lightbulb Icon ---------- */
-  #lightbulb {
+}
+
+/* ---------- Lightbulb Icon ---------- */
+#lightbulb {
     font-size: 80px;
     color: #fff;
     cursor: pointer;
     transition: opacity 0.5s ease;
-  }
-  
-  /* ---------- Handle & Top Bar ---------- */
-  #handle-container {
+}
+
+/* ---------- Handle & Top Bar ---------- */
+#handle-container {
     position: absolute;
     top: 0;
     left: 50%;
@@ -39,26 +39,26 @@
     display: none; /* Initially hidden until bulb is clicked */
     align-items: center;
     flex-direction: column;
-  }
-  
-  /* Top horizontal bar (Brown base) */
-  #top-bar {
+}
+
+/* Top horizontal bar (Brown base) */
+#top-bar {
     width: 90px;
     height: 8px;
     background: #8b5a2b; /* Brown color */
     border-radius: 2px;
-  }
-  
-  /* Wire (String) connecting the knob */
-  #handle-wire {
+}
+
+/* Wire (String) connecting the knob */
+#handle-wire {
     width: 6px;
     height: 50px;
     background: #bbb; /* Grayish wire color */
     margin: 0 auto;
-  }
-  
-  /* Knob (Hollow Green Circle) */
-  #handle-knob {
+}
+
+/* Knob (Hollow Green Circle) */
+#handle-knob {
     width: 35px; /* Adjusted size */
     height: 35px;
     border: 5px solid #32cd32; /* Green thick border */
@@ -69,16 +69,15 @@
     display: flex;
     align-items: center;
     justify-content: center;
-  }
-  
-  
-  /* Dragging State */
-  #handle-knob:active {
-    cursor: grabbing;
-  }
+}
 
-  /* ---------- Main Landing Page Styles ---------- */
-  body {
+/* Dragging State */
+#handle-knob:active {
+    cursor: grabbing;
+}
+
+/* ---------- Main Landing Page Styles ---------- */
+body {
     background: linear-gradient(45deg, #ff9a3c, #ff6b81);
     display: flex;
     flex-direction: column;
@@ -86,24 +85,23 @@
     align-items: center;
     height: 100vh;
     overflow: hidden;
-  }
-  
-  /* The container holding the tiles */
-  .container {
+}
+
+/* The container holding the tiles */
+.container {
     perspective: 1200px;
     perspective-origin: 40% 50%;
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
-  }
-  
-  /* Tiles Styling */
-  .tile {
+}
+
+/* Tiles Styling */
+.tile {
     width: 310px;  /* Adjusted width to fit the screen */
     height: 500px; /* Adjusted height to fit the screen */
-    
-    top: -250px;  /* Moves tiles upward */
+    top: -250px;   /* Moves tiles upward */
     left: -180px;  /* Moves tiles to the right */
     background: rgb(255, 255, 255);
     border-radius: 40px;
@@ -116,11 +114,77 @@
     align-items: center;
     font-size: 50px;
     font-weight: bold;
-  }
-  
-  /* Staggered stacking */
-  .tile:nth-child(1) { transform: translateX(5px) translateY(-5px) translateZ(25px); }
-  .tile:nth-child(2) { transform: translateX(10px) translateY(-10px) translateZ(20px); }
-  .tile:nth-child(3) { transform: translateX(15px) translateY(-15px) translateZ(15px); }
-  .tile:nth-child(4) { transform: translateX(20px) translateY(-20px) translateZ(10px); }
-  .tile:nth-child(5) { transform: translateX(25px) translateY(-25px) translateZ(5px); }    
+}
+
+/* Staggered stacking (tiles stack toward top-right) */
+.tile:nth-child(1) { transform: translateX(5px) translateY(-5px) translateZ(25px); }
+.tile:nth-child(2) { transform: translateX(10px) translateY(-10px) translateZ(20px); }
+.tile:nth-child(3) { transform: translateX(15px) translateY(-15px) translateZ(15px); }
+.tile:nth-child(4) { transform: translateX(20px) translateY(-20px) translateZ(10px); }
+.tile:nth-child(5) { transform: translateX(25px) translateY(-25px) translateZ(5px); }
+
+/* ---------- Custom Styles for First Tile (Tile A) ---------- */
+.tile.first-tile {
+    background: #ffd8b1; /* A light peach color that complements the background */
+    color: #000; /* Black text */
+    font-size: 32px; /* Adjusted font size */
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    /* align-items: center; */
+    padding: 20px;
+}
+
+.tile.first-tile .tile-content h1 {
+    position: absolute;
+    left: 105px;
+    top: 40px;
+    font-size: 60px;
+}
+
+.tile.first-tile .tile-content p {
+    font-family: "Arial", sans-serif;
+    /* font-style: italic;
+    font-weight: bold; */
+    position: absolute;  /* Allows positioning inside .tile-content */
+    top: 200px;  /* Adjust up/down */
+    left: 12px;  /* Adjust left/right */
+    /* font-size: 40px; */
+}
+
+.tile.first-tile .tile-content p1 {
+    font-style: italic;
+    font-weight: bold;
+    position: absolute;  /* Allows positioning inside .tile-content */
+    top: 320px;  /* Adjust up/down */
+    left: 85px;  /* Adjust left/right */
+    font-size: 42px;
+}
+
+.tile.first-tile .tile-content .button-container {
+    margin-top: 350px;
+    display: flex;
+    gap: 50px;
+}
+
+.tile.first-tile .tile-content .btn {
+    padding: 10px 20px; /* Adjusted buttons height */
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+/* Eyes button: a background matching the card */
+.tile.first-tile .tile-content .eyes-btn {
+    background: #ffc089; /* A complementary shade */
+    color: #000;
+    border: 2px solid #000;
+}
+
+/* Nopes button: white with black text and border */
+.tile.first-tile .tile-content .nopes-btn {
+    background: #df9656;
+    color: #000;
+    border: 2px solid #000;
+}

@@ -13,23 +13,66 @@ document.addEventListener("DOMContentLoaded", function () {
     const letters = ["A", "B", "C", "D", "E"];
     let tiles = [];
 
+    // Function to remove a tile with animation (common for arrow key and button clicks)
+    function removeTile(tile) {
+        tile.style.opacity = "0";
+        tile.style.transform =
+            "translateX(50%) translateY(-50%) translateZ(-50px) rotateY(20deg)";
+        setTimeout(() => {
+            container.removeChild(tile);
+            // Also remove the tile from the tiles array if it exists there
+            const idx = tiles.indexOf(tile);
+            if (idx > -1) {
+                tiles.splice(idx, 1);
+            }
+        }, 500);
+    }
+
     function createTiles() {
         // Clear existing tiles (if any)
         container.innerHTML = "";
         tiles = []; // Reset tiles array
-        
+
         // Generate tiles dynamically in FIFO order
         for (let i = 0; i < letters.length; i++) {
             let tile = document.createElement("div");
             tile.classList.add("tile");
-            tile.textContent = letters[i];
             // Assign a z-index so that the first tile gets the highest value
-            tile.style.zIndex = letters.length - i; // A gets highest z-index
+            tile.style.zIndex = letters.length - i;
+
+            if (letters[i] === "A") {
+                // Customize the first tile
+                tile.classList.add("first-tile");
+                tile.innerHTML = `
+                  <div class="tile-content">
+                    <h1>Hey</h1>
+                    <p>Kusloom_Fatima21</p>
+                    <p1>Right?</p1>
+                    <div class="button-container">
+                      <button class="btn eyes-btn">👀</button>
+                      <button1 class="btn nopes-btn">Nopes!!</button1>
+                    </div>
+                  </div>
+                `;
+            } else {
+                // For other tiles, just show the letter
+                tile.textContent = letters[i];
+            }
             container.appendChild(tile);
             tiles.push(tile);
         }
-    }    
 
+        // Attach event listeners for buttons in tile A (if it exists)
+        const tileA = container.querySelector(".first-tile");
+        if (tileA) {
+            const eyesBtn = tileA.querySelector(".eyes-btn");
+            const nopesBtn = tileA.querySelector(".nopes-btn");
+            if (eyesBtn && nopesBtn) {
+                eyesBtn.addEventListener("click", () => removeTile(tileA));
+                nopesBtn.addEventListener("click", () => removeTile(tileA));
+            }
+        }
+    }
 
     if (!ENTRY_PAGE_ENABLED) {
         /* ---------- SKIP ENTRY PAGE ---------- */
@@ -95,12 +138,7 @@ document.addEventListener("DOMContentLoaded", function () {
     document.addEventListener("keydown", function (event) {
         if (event.key === "ArrowRight" && tiles.length > 0) {
             let topTile = tiles.shift(); // Remove first tile instead of last
-            topTile.style.opacity = "0";
-            topTile.style.transform =
-                "translateX(50%) translateY(-50%) translateZ(-50px) rotateY(20deg)";
-            setTimeout(() => {
-                container.removeChild(topTile);
-            }, 500);
+            removeTile(topTile);
         }
     });
 
