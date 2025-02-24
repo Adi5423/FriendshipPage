@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
     /* ---------- CONFIGURATION TO ENABLE/DISABLE ENTRY PAGE ---------- */
-    const ENTRY_PAGE_ENABLED = false; // Set to false to skip the entry page
+    const ENTRY_PAGE_ENABLED = true; // Set to false to skip the entry page
 
     /* ---------- DOM ELEMENTS ---------- */
     const splashOverlay = document.getElementById("splash-overlay");
@@ -14,19 +14,27 @@ document.addEventListener("DOMContentLoaded", function () {
     let tiles = [];
 
     // Function to remove a tile with animation (common for arrow key and button clicks)
-    function removeTile(tile) {
+    function removeTile(tile, direction = 'default') {
         tile.style.opacity = "0";
-        tile.style.transform =
-            "translateX(50%) translateY(-50%) translateZ(-50px) rotateY(20deg)";
+        
+        // Choose the transform based on the direction:
+        if (direction === 'nopes') {
+            // Animate downward (southwest)
+            tile.style.transform = "translateX(-50%) translateY(50%) translateZ(-50px) rotateY(20deg)";
+        } else {
+            // Animate upward/rightward (default)
+            tile.style.transform = "translateX(50%) translateY(-50%) translateZ(-50px) rotateY(20deg)";
+        }
+        
         setTimeout(() => {
             container.removeChild(tile);
-            // Also remove the tile from the tiles array if it exists there
             const idx = tiles.indexOf(tile);
             if (idx > -1) {
                 tiles.splice(idx, 1);
             }
         }, 500);
     }
+    
 
     function createTiles() {
         // Clear existing tiles (if any)
@@ -68,10 +76,13 @@ document.addEventListener("DOMContentLoaded", function () {
             const eyesBtn = tileA.querySelector(".eyes-btn");
             const nopesBtn = tileA.querySelector(".nopes-btn");
             if (eyesBtn && nopesBtn) {
+                // Eyes button uses the default animation
                 eyesBtn.addEventListener("click", () => removeTile(tileA));
-                nopesBtn.addEventListener("click", () => removeTile(tileA));
+                
+                // Nopes button uses the downward animation
+                nopesBtn.addEventListener("click", () => removeTile(tileA, 'nopes'));
             }
-        }
+        }        
     }
 
     if (!ENTRY_PAGE_ENABLED) {

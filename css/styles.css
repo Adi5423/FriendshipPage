@@ -59,13 +59,13 @@
 
 /* Knob (Hollow Green Circle) */
 #handle-knob {
-    width: 35px; /* Adjusted size */
+    width: 35px;
     height: 35px;
-    border: 5px solid #32cd32; /* Green thick border */
-    background: transparent; /* Hollow center */
+    border: 5px solid #32cd32;
+    background: transparent;
     border-radius: 50%;
     cursor: grab;
-    margin-top: -3px; /* Slightly overlapping with wire */
+    margin-top: -3px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -99,10 +99,10 @@ body {
 
 /* Tiles Styling */
 .tile {
-    width: 310px;  /* Adjusted width to fit the screen */
-    height: 500px; /* Adjusted height to fit the screen */
-    top: -250px;   /* Moves tiles upward */
-    left: -180px;  /* Moves tiles to the right */
+    width: 310px;
+    height: 500px;
+    top: -250px;
+    left: -180px;
     background: rgb(255, 255, 255);
     border-radius: 40px;
     position: absolute;
@@ -125,13 +125,11 @@ body {
 
 /* ---------- Custom Styles for First Tile (Tile A) ---------- */
 .tile.first-tile {
-    background: #ffd8b1; /* A light peach color that complements the background */
-    color: #000; /* Black text */
-    font-size: 32px; /* Adjusted font size */
+    background: #ffd8b1;
+    color: #000;
+    font-size: 32px;
     display: flex;
     flex-direction: column;
-    /* justify-content: center; */
-    /* align-items: center; */
     padding: 20px;
 }
 
@@ -143,21 +141,17 @@ body {
 }
 
 .tile.first-tile .tile-content p {
-    font-family: "Arial", sans-serif;
-    /* font-style: italic;
-    font-weight: bold; */
-    position: absolute;  /* Allows positioning inside .tile-content */
-    top: 200px;  /* Adjust up/down */
-    left: 12px;  /* Adjust left/right */
-    /* font-size: 40px; */
+    position: absolute;
+    top: 200px;
+    left: 12px;
 }
 
 .tile.first-tile .tile-content p1 {
     font-style: italic;
     font-weight: bold;
-    position: absolute;  /* Allows positioning inside .tile-content */
-    top: 320px;  /* Adjust up/down */
-    left: 85px;  /* Adjust left/right */
+    position: absolute;
+    top: 320px;
+    left: 85px;
     font-size: 42px;
 }
 
@@ -168,21 +162,19 @@ body {
 }
 
 .tile.first-tile .tile-content .btn {
-    padding: 10px 20px; /* Adjusted buttons height */
+    padding: 10px 20px;
     border: none;
     border-radius: 8px;
     cursor: pointer;
     font-size: 18px;
 }
 
-/* Eyes button: a background matching the card */
 .tile.first-tile .tile-content .eyes-btn {
-    background: #ffc089; /* A complementary shade */
+    background: #ffc089;
     color: #000;
     border: 2px solid #000;
 }
 
-/* Nopes button: white with black text and border */
 .tile.first-tile .tile-content .nopes-btn {
     background: #df9656;
     color: #000;
